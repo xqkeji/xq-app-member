@@ -3,14 +3,14 @@ return [
 	'title'=>'会员管理',
 	'children'=>[
 		[
-			'url'=>'/member/user/admin',
+			'url'=>'user/admin',
 			'title'=>'用户管理',
-			'icon'=>'fas fa-user-tie',
+			'icon'=>'bi bi-person-lines-fill',
 		],
 		[
-			'url'=>'/member/group/admin',
+			'url'=>'group/admin',
 			'title'=>'用户组管理',
-			'icon'=>'fas fa-users',
+			'icon'=>'bi bi-person-hearts',
 		],
 		
 		
