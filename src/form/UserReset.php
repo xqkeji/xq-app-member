@@ -1,17 +1,21 @@
 <?php
-return [
-    'form',
-    [
-        'template'=>'default',
+namespace xqkeji\app\member\form;
+use xqkeji\form\Form;
+class UserReset extends Form
+{
+    protected $name = 'user_reset';
+    protected $el=[
+        '@Username',
+        '@Password',
+        '@ConfirmPassword',
+        '@Captcha',
+        '@Emailcode',
         [
-            'import'=>'email',
-            'name'=>'username',
+            '~FooterButton',
+            'attrs'=>[
+                'value'=>'重置密码',
+            ],
+        ]
+    ];
+}
 
-        ],
-        'Password',
-        'ConfirmPassword',
-        'Captcha',
-        'Emailcode',
-    ],
-    'foot'=>'ResetFoot'
-];

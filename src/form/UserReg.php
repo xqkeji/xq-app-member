@@ -1,21 +1,20 @@
 <?php
-return [
-    'form',
-    [
-        'template'=>'default',
+namespace xqkeji\app\member\form;
+use xqkeji\form\Form;
+class UserReg extends Form
+{
+    protected $name = 'user_reg';
+    protected $el=[
+        '@Username',
+        '@Password',
+        '@ConfirmPassword',
+        '@Captcha',
+        '@Emailcode',
         [
-            'import'=>'email',
-            'name'=>'username',
-            'validators'=>[
-                ['required'],
-                ['email'],
-                ['unique'],
+            '~LoginButton',
+            'attrs'=>[
+                'value'=>'注册',
             ],
-        ],
-        'Password',
-        'ConfirmPassword',
-        'Captcha',
-        'Emailcode',
-    ],
-    'foot'=>'RegFoot'
-];
+        ]
+    ];
+}

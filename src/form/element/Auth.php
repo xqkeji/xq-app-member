@@ -1,9 +1,13 @@
 <?php
-return [
-	'auth',
-	'name'=>'auth',
-	'text'=>'权限',
-	'type'=>'member',
-	'attr_class'=>'form-control',
-	'template'=>'auth',
-];
+namespace xqkeji\app\member\form\element;
+use xqkeji\form\element\Auth as BaseAuth;
+class Auth extends BaseAuth
+{
+	protected $name = 'auth';
+	protected $text = '权限';
+	protected $type = 'member';
+	protected $attrs = [
+		'class' => 'form-control',
+	];
+	protected $template = '@auth';
+}

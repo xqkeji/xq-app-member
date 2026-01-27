@@ -1,63 +1,53 @@
 <?php
-return [
-	'tab_form',
-	[
+namespace xqkeji\app\member\form;
+use xqkeji\form\TabForm;
+class Group extends TabForm
+{
+	protected $name = 'group';
+	public function beforeBind()
+	{
+		$controller=\xqkeji\App::getController();
+		$actionName=$controller->getActionName();
+		$data=$this->getData();
+		
+		if(!isset($data['status']))
+		{
+			$data['status']=0;
+		}
+		if(!isset($data['auth']))
+		{
+			$data['auth']=[];
+		}
+		$this->setData($data);
+	}
+	protected $el=[
 		[
-			'tab',
+			'$tab',
 			'name'=>'group_info',
 			'text'=>'基本信息',
-			[
-				'template'=>'row',
-				'attr_class'=>'form-control',
+			'el'=>[
 				[	
-					'text',
+					'@Name',
 					'text'=>'用户组名称',
 					'name'=>'groupname',
-					'validators'=>[
-						['required'],
-					],
 				],
 				[	
-					'text_area',
+					'@Desc',
 					'text'=>'用户组描述',
-					'name'=>'desc',
-					'attr_rows'=>3,
-					'attr_cols'=>20,
-					'validators'=>[
-						['required'],
-					],
 				],
-				'switch',
+				'@SwitchCheck',
 			],
 		],
 		[
-			'tab',
+			'$tab',
 			'name'=>'group_auth',
 			'text'=>'用户组权限',
-			[
-				'template'=>'row',
-				'attr_class'=>'form-control',
-				'auth',
-				'csrf',
+			'el'=>[
+				'@auth',
+				'@Csrf',
 			],
 		],
-	
-	],
-	'event'=>[
-		'beforeBind'=>function($form){
-			$controller=\xqkeji\App::getController();
-			$actionName=$controller->getActionName();
-			$data=$form->getData();
-			
-			if(!isset($data['status']))
-			{
-				$data['status']=0;
-			}
-			if(!isset($data['auth']))
-			{
-				$data['auth']=[];
-			}
-			$form->setData($data);
-		}
-	],
-];
+		'@SubmitReset',
+	];
+}
+

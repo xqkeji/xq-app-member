@@ -1,0 +1,14 @@
+<?php
+namespace xqkeji\app\member\form\element;
+use xqkeji\form\element\Submit;
+class LoginButton extends Submit
+{
+	protected $name = 'login';
+	protected $attrs = [
+		'class' => 'btn btn-primary',
+        'style'=>'width:100px;',
+        'value'=>'登录',
+	];
+	protected $template='~LoginButton';
+}
+

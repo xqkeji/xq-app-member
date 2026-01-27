@@ -1,80 +1,65 @@
 <?php
-return [
-	'tab_form',
-	'name'=>'user',
-	[
+namespace xqkeji\app\member\form;
+use xqkeji\form\TabForm;
+class User extends TabForm
+{
+	protected $name = 'user';
+	protected $el=[
 		[
-			'tab',
-			'text'=>'基本信息',
+			'$tab',
 			'name'=>'user_info',
-			[
-				'template'=>'row',
-				'attr_class'=>'form-control',
+			'text'=>'基本信息',
+			'el'=>[
+				'@Username',
+				'@Password',
+				'@ConfirmPassword',
 				[	
-					'text',
-					'text'=>'用户名',
-					'name'=>'username',
-					'validators'=>[
-						['required'],
-					],
-				],
-				'password',
-				'confirm_password',
-				[	
-					'text',
+					'@Fullname',
 					'text'=>'姓名',
-					'name'=>'fullname',
-					'validators'=>[
-						['required'],
-					],
 				],
-				'switch',
-				'roles',
+				'@SwitchCheck',
+				'@Roles',
 			],
 		],
 		[
-			'tab',
-			'text'=>'授权信息',
+			'$tab',
 			'name'=>'user_auth',
-			[
-				'template'=>'row',
-				'attr_class'=>'form-control',
-				'auth',
-				'csrf',
+			'text'=>'授权信息',
+			'el'=>[
+				'@Auth',
+				'@Csrf',
 			],
 		],
-	],
-	'event'=>[
-		'beforeBind'=>function($form){
-			$controller=\xqkeji\App::getController();
-			$actionName=$controller->getActionName();
-			$data=$form->getData();
-			
-			if($actionName=='edit')
+		'@SubmitReset',
+	];
+	public function beforeBind()
+	{
+		$controller=\xqkeji\App::getController();
+		$actionName=$controller->getActionName();
+		$data=$this->getData();
+		if($actionName=='edit')
+		{
+			if(empty($data['password']))
 			{
-				
-				if(empty($data['password']))
-				{
-					unset($data['password']);
-				}
-				if(empty($data['confirm_password']))
-				{
-					unset($data['confirm_password']);
-				}
+				unset($data['password']);
 			}
-			if(!isset($data['status']))
+			if(empty($data['confirm_password']))
 			{
-				$data['status']=0;
+				unset($data['confirm_password']);
 			}
-			if(!isset($data['roles']))
-			{
-				$data['roles']=[];
-			}
-			if(!isset($data['auth']))
-			{
-				$data['auth']=[];
-			}
-			$form->setData($data);
 		}
-	],
-];
+		if(!isset($data['status']))
+		{
+			$data['status']=0;
+		}
+		if(!isset($data['roles']))
+		{
+			$data['roles']=[];
+		}
+		if(!isset($data['auth']))
+		{
+			$data['auth']=[];
+		}
+		$this->setData($data);
+	}
+}
