@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 namespace xqkeji\app\member\table;
 use xqkeji\form\Table;
 class Group extends Table
