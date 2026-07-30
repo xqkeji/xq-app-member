@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 namespace xqkeji\app\member\table;
 use xqkeji\form\Table;
-class ListGroup extends Table
+class Group extends Table
 {
 	protected $name = 'list_group';
 	protected $foot='ListFoot';
 	protected $el=[
-		'@ListId',
+		'@Id',
 		[
-			'@ListName',
+			'@Name',
 			'name'=>'groupname',
 			'text'=>'用户组名称',
 			'attrs'=>[
@@ -16,16 +16,16 @@ class ListGroup extends Table
 			],
 		],
 		[
-			'@ListDesc',
+			'@Desc',
 			'name'=>'desc',
 			'text'=>'描述',
 			'attrs'=>[
 				'style'=>'min-width:200px;',
 			],
 		],
-		'@ListSwitch',
-		'@ListCreateTime',
-		'@ListUpdateTime',
-		'@ListEditDelete',
+		'@Switch',
+		'@CreateTime',
+		'@UpdateTime',
+		'@EditDelete',
 	];
 }

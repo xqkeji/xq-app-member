@@ -1,14 +1,14 @@
-<?php
+﻿<?php
 namespace xqkeji\app\member\table;
 use xqkeji\form\Table;
-class ListUser extends Table
+class User extends Table
 {
 	protected $name = 'list_user';
-	protected $foot='@ListFootOnlyDelete';
+	protected $foot='@FootOnlyDelete';
 	protected $el=[
-		'@ListId',
+		'@Id',
 		[
-			'@ListName',
+			'@Name',
 			'name'=>'nickname',
 			'text'=>'用户昵称',
 			'attrs'=>[
@@ -16,32 +16,32 @@ class ListUser extends Table
 			],
 		],
 		[
-			'@ListName',
+			'@Name',
 			'name'=>'username',
 			'text'=>'手机号码',
 			'attrs'=>[
 				'style'=>'min-width:120px;',
 			],
 		],
-		'@ListSwitch',
+		'@Switch',
 		[
-			'@ListName',
+			'@Name',
 			'text'=>'登录次数',
 			'name'=>'login_counts',
 			'attrs'=>[
 				'style'=>'min-width:120px;',
 			],
 		],
-		'@ListLoginTime',
+		'@LoginTime',
 		[
-			'@ListName',
+			'@Name',
 			'text'=>'登录IP',
 			'name'=>'login_ip',
 			'attrs'=>[
 				'style'=>'min-width:120px;',
 			],
 		],
-		'@ListEditDelete',
+		'@EditDelete',
 	];
 }
 
