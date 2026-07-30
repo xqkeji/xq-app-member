@@ -23,7 +23,7 @@ class User extends Table
 				'style'=>'min-width:120px;',
 			],
 		],
-		'@Switch',
+		'@SwitchCheck',
 		[
 			'@Name',
 			'text'=>'登录次数',
